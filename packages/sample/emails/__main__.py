@@ -41,7 +41,8 @@ def main(args):
             "body" : "no content provided"
         }
 
-    sg = SendGridAPIClient(key)
+    # sg = SendGridAPIClient(key)
+    x=key + user_from + user_to + user_subject + content
     # message = Mail(
     #     from_email = user_from,
     #     to_emails = user_to,
@@ -56,5 +57,5 @@ def main(args):
     #     }
     return {
         "statusCode" : HTTPStatus.ACCEPTED,
-        "body" : sg
+        "body" : x
     }
