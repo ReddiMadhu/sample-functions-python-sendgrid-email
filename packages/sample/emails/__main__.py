@@ -41,21 +41,20 @@ def main(args):
             "body" : "no content provided"
         }
 
-    # sg = SendGridAPIClient(key)
-    x=key + user_from + user_to + user_subject + content
-    # message = Mail(
-    #     from_email = user_from,
-    #     to_emails = user_to,
-    #     subject = user_subject,
-    #     html_content = content)
-    # response = sg.send(message)
+    sg = SendGridAPIClient(key)
+    message = Mail(
+        from_email = user_from,
+        to_emails = user_to,
+        subject = user_subject,
+        html_content = content)
+    response = sg.send(message)
 
-    # if response.status_code != 202:
-    #     return {
-    #         "statusCode" : response.status_code,
-    #         "body" : "email failed to send"
-    #     }
+    if response.status_code != 202:
+        return {
+            "statusCode" : response.status_code,
+            "body" : "email failed to send"
+        }
     return {
         "statusCode" : HTTPStatus.ACCEPTED,
-        "body" : x
+        "body" : "sucess"
     }
